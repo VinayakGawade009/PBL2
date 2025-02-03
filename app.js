@@ -19,18 +19,24 @@ app.get("/", (req, res) => {
     res.send("Ani");
 });
 
-app.get("/test", async(req, res) => {
-    let sampleListing = new Listing ({
-        title: "Python Basics",
-        description: "Description of Python Basics Course.",
-        tag: "Python",
-        state: "recorded",
-        language: "english",
+app.get("/listings", (req, res) => {
+    Listing.find({}).then(res => {
+        console.log(res);
     });
-    await sampleListing.save();
-    console.log("sample was saved");
-    res.send("sampleListing is saved");
-});
+})
+
+// app.get("/test", async(req, res) => {
+//     let sampleListing = new Listing ({
+//         title: "Python Basics",
+//         description: "Description of Python Basics Course.",
+//         tag: "Python",
+//         state: "recorded",
+//         language: "english",
+//     });
+//     await sampleListing.save();
+//     console.log("sample was saved");
+//     res.send("sampleListing is saved");
+// });
 
 app.listen(8080, () => {
     console.log("Server is listening to port 8080");
