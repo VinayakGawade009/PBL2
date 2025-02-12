@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codee</title>
+</head>
+<body>
+    <h3>Create a New Listing</h3>
+    <form action="/listings" method="POST">
+        <input name="listing[title]" placeholder="Enter title" type="text">
+        <br>
+        <br>
+        <textarea name="listing[description]" placeholder="Enter description" type="text"></textarea>
+        <br>
+        <br>
+        <input name="listing[image]" placeholder="Enter image url/link" type="text">
+        <br>
+        <br>
+        <label for="tag">Select a tag:</label>
+        <select name="listing[tag]" id="tag">
+            <% tags.forEach(tag => { %>
+                <option value="<%= tag.value %>">
+                  <%= tag.label %>
+                </option>
+              <% }) %>
+        </select>
+        <br>
+        <br>
+        <label for="language">Language:</label>
+        <select name="listing[language]" id="language">
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+        </select>
+        <br>
+        <br>
+        <label for="state">Select a state:</label>
+        <select name="listing[state]" id="state">
+            <option value="Recorded">Recorded</option>
+            <option value="Live">Live</option>
+        </select>
+        <br>
+        <br>
+        <button>Add</button>
+    </form>
+</body>
+</html>
