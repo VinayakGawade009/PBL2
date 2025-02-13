@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    height : 180px;
+    background-color: #4B4376;
+    color: white;
+    padding: 20px;
+}
+
+header h1{
+    color : white;
+    font-family:'Times New Roman', Times, serif ;
+}
+
+nav input {
+    height : 49px;
+    width: 370px;
+    border-radius: 30px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.search{
+    display : flex;
+    justify-content: center;
+    gap : 5px;
+    align-items: center;
+}
+
+.search_icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height : 50px;
+    width : 50px;
+    border-radius : 50%;
+}
+
+.login{
+    color : black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height : 50px;
+    width : 50px;
+    border-radius: 50%;
+    position: absolute;
+    right : 5px;
+    top : 5px;
+}
+
+.search_icon:hover{
+    background-color: rgba(10, 151, 176,0.2);
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+.login:hover{
+    background-color:  rgba(10, 151, 176,0.2);
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+
+}
+
+.sicons{
+    /* position: relative;
+    bottom : 0px; */
+    font-family:'Times New Roman', Times, serif ;
+    color : white;
+    font-weight: 500;
+    font-size : 25px;
+    display : flex;
+    gap : 65px;
+    justify-content: center;
+    align-items: end;
+    /* margin-bottom: 0px; */
+}
+
+.icon{
+    height : 5px;
+    width : 40px;
+    /* height : 40px;
+    width : 400px; */
+}
+
+nav button {
+    border-radius: 20px;
+    padding: 10px 20px;
+    background: white;
+    border: none;
+    cursor: pointer;
+}
+
+nav button:hover{
+    border : 2px solid black;
+}
+
+.listings {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    height : 480px;
+    overflow: visible ;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 300px;
+}
+
+.card img {
+    height : 60%; 
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card:hover{
+    /* border : 2px solid white; */
+    transition: transform 0.2s ease;
+    transform: scale(1.05);
+}
+
+.text{
+    /* position: absolute; */
+    font-size: 15px;
+    /* margin-bottom: 2px; */
+}
+
+.main{
+    background-color: #1D1616;
+}
+
+footer{
+    height : 300px;
+    background-color: #4B4376;
+}
