@@ -1,47 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codee</title>
-</head>
+<% layout("/layouts/boilerplate") %>
+
 <body>
-    <h3>Edit your Listing</h3>
-    <form action="/listings/<%= listing._id %>?_method=PUT" method="POST">
-        <input name="listing[title]" value="<%= listing.title %>" type="text">
-        <br>
-        <br>
-        <textarea name="listing[description]" type="text"><%= listing.description %></textarea>
-        <br>
-        <br>
-        <input name="listing[image]" value="<%= listing.image %>" placeholder="Enter image url/link" type="text">
-        <br>
-        <br>
-        <label for="tag">Select a tag:</label>
-        <select name="listing[tag]" id="tag">
-            <% tags.forEach(tag => { %>
-                <option value="<%= tag.value %>" <%= tag.value === prevValue ? 'selected' : '' %>>
-                  <%= tag.label %>
-                </option>
-              <% }) %>
-        </select>
-        <br>
-        <br>
-        <label for="language">Language:</label>
-        <select name="listing[language]" id="language">
-            <option value="English" <%= listing.language === 'English' ? 'selected' : '' %>>English</option>
-            <option value="Hindi" <%= listing.language === 'Hindi' ? 'selected' : '' %>>Hindi</option>
-        </select>
-        <br>
-        <br>
-        <label for="state">Select a state:</label>
-        <select name="listing[state]" id="state">
-            <option value="Recorded" <%= listing.state === 'Recorded' ? 'selected' : '' %>>Recorded</option>
-            <option value="Live" <%= listing.state === 'Live' ? 'selected' : '' %>>Live</option>
-        </select>
-        <br>
-        <br>
-        <button>Edit</button>
-    </form>
+    <div class="row">
+        <div class="col-8 offset-2">
+
+            <br>
+            <h3>Edit your Listing</h3>
+            <form action="/listings/<%= listing._id %>?_method=PUT" method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="listing[description]" type="text" class="form-control"><%= listing.description %></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image Link</label>
+                    <input name="listing[image]" value="<%= listing.image %>" placeholder="Enter image url/link" type="text" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label for="tag" class="form-label">Tag:</label>
+                    <select name="listing[tag]" id="tag" class="form-control">
+                        <% tags.forEach(tag => { %>
+                            <option value="<%= tag.value %>" <%= tag.value === prevValue ? 'selected' : '' %>>
+                            <%= tag.label %>
+                            </option>
+                        <% }) %>
+                    </select>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="language" class="form-label">Language:</label>
+                        <select name="listing[language]" id="language" class="form-control">
+                            <option value="English" <%= listing.language === 'English' ? 'selected' : '' %>>English</option>
+                            <option value="Hindi" <%= listing.language === 'Hindi' ? 'selected' : '' %>>Hindi</option>
+                        </select>
+                    </div>
+    
+                    <div class="mb-3 col-md-8">
+                        <label for="state" class="form-label">Select a state:</label>
+                        <select name="listing[state]" id="state" class="form-control">
+                            <option value="Recorded" <%= listing.state === 'Recorded' ? 'selected' : '' %>>Recorded</option>
+                            <option value="Live" <%= listing.state === 'Live' ? 'selected' : '' %>>Live</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <button class="btn btn-dark edit-btn">Edit</button>
+            </form>
+            <br>
+        </div>
+    </div>
 </body>
-</html>
