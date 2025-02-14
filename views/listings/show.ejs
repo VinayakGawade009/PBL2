@@ -1,17 +1,155 @@
 <% layout("/layouts/boilerplate") %>
-<body>
-    <h3>Listing Details</h3>
-    <ul>
-        <li><%= listing.title %></li>
-        <li><%= listing.description %></li>
-        <li><%= listing.tag %></li>
-        <li><%= listing.state %></li>
-        <li><%= listing.language %></li>
-    </ul>
-    <br>
-    <a href="/listings/<%= listing._id %>/edit">Edit this listing</a>
-    <br><br>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
-        <button>Delete</button>
-    </form>
+<body>    
+    <div class="row mt-4">
+        <div class="col-10 offset-1">
+            <h3>Listing Details</h3>
+            <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+                <div class="col sm-4">
+                    <div class="card mb-3 pb-3" style="background-color: lavender;max-width: fit-content;">
+                        <div class="row g-0">
+
+                            <img src="<%= listing.image %>" alt="Python" class="card-img-top show-img">
+
+                            <div class="card-body mx-2">
+                                <h5 class="card-title"><b><%= listing.title %></b></h5>
+                                <p class="card-text"><%= listing.description %></p>
+                                <div class="btns">
+                                    <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark edit-btn mx-2">Edit</a>
+                            
+                                    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+                                        <button class="btn btn-dark">Delete</button>
+                                    </form>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col sm-6">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <P style="font-size: larger;">
+                                <b style="font-size: larger;"> About This Course :</b> <br>
+                                <%= listing.description %>
+                            </P>
+                            <div class="capsule"><i>#<%= listing.tag %></i></div>
+                            <div class="capsule"><i><%= listing.state %></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br> <br>
+
+    <div class="col-10 offset-1">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card">
+                    <div class="class-body">
+                        <h5 class="card-title"> ABOUT THE INSTRUCTOR</h5>
+                        <P class="card-text">
+                        <div class="row ">
+                            <h5 style="color: blue;text-decoration: underline;"> Dr. Angela Yu</h5> <br>
+                            <!-- <img src="images/profile.jpg" alt=""
+                                style="border-radius: 50%;border-style: solid;border-color: gray;"> -->
+                            <div class="col">
+                                Developer and Lead Instructor <br>
+                                4.7 Instructor Rating <br>
+                                929,508 Reviews <br>
+                                3,052,179 Student <br>
+                                7 Courses <br> <br>
+                            </div>
+                            <p>
+                                I'm Angela, I'm a developer with a passion for teaching. I'm the lead instructor at the
+                                London App Brewery, London's leading Programming Bootcamp. I've helped hundreds of
+                                thousands
+                                of students learn to code and change their lives by becoming a developer. I've been
+                                invited
+                                by companies such as Twitter, Facebook and Google to teach their employees. <br>
+
+                                My first foray into programming was when I was just 12 years old, wanting to build my
+                                own
+                                Space Invader game. Since then, I've made hundred of websites, apps and games. But most
+                                importantly, I realised that my greatest passion is teaching. <br>
+
+                                I spend most of my time researching how to make learning to code fun and make hard
+                                concepts
+                                easy to understand. I apply everything I discover into my bootcamp courses. In my
+                                courses,
+                                you'll find lots of geeky humour but also lots of explanations and animations to make
+                                sure
+                                everything is easy to understand. <br>
+
+                                I'll be there for you every step of the way.
+                            </p>
+                        </div>
+                        </P>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border rounded-top" style="padding: 1rem !important;">
+                    <div class="card-body">
+                        <h5 class="card-title">NOTES</h5>
+                        <p class="card-text">FOR HANDWRITTEN NOTES <br>CLICK ON LINK GIVEN BELOW.</p>
+                        <button class="btn btn-dark">Add Notes</button>
+                    </div>
+                </div>
+                <br> <br>
+                <div class="card border rounded-bottom" style="padding: 1rem !important;">
+                    <div class="card-body">
+                        <h5 class="card-title">RECORDING</h5>
+                        <p class="card-text">FOR RECORDINGS OF PREVIOUSLY COVERED TOPIC <br> CLICK ON BELOW LINK.</p>
+                        <button class="btn btn-dark">Upload Video</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br><br>
+        <h3> RELATED COURSES</h3><br>
+        <div class="container d-flex justify-content-around">
+                <div class="card mx-1" style="background-color: lavender;max-width: 33%;">
+                    <img src="<%= listing.image %>" class="card-img-top" alt="..." style="width: 100%;">
+                    <div class="card-body mx-1">
+                        <h5 class="card-title">ADVANCE PYTHON</h5>
+                        <p class="card-text">By the course's culmination you will not only possess a profound
+                            understanding of Python but also be equppied to face a multitude of programming
+                            challanges.
+                        </p>
+                        <br><br>
+                    </div>
+                </div>
+                <div class="card mx-1" style="background-color:lavender;max-width: 33%;transition: ease;">
+                    <img src="<%= listing.image %>" class="card-img-top" alt="..." style="width: 100%;">
+                    <div class="card-body mx-1">
+                        <h5 class="card-title">DATA ANALYSIS WITH PTYHON</h5>
+                        <p class="card-text">Analysing data eith python is an essential skill for Data Scientist and
+                            Data
+                            Analysts.This course will
+                            take you from the basics of data analysis with python to building and evaluating data
+                            models.
+                        </p>
+                        <br> <br>
+                    </div>
+                </div>
+                <div class="card mx-1" style="background-color: lavender;max-width: 38%;">
+                    <img src="<%= listing.image %>" class="card-img-top" alt="..." style="width: 100%;">
+                    <div class="card-body  mx-1">
+                        <h5 class="card-title">PYHTON FOR CYBER SECURITY</h5>
+                        <p class="card-text">Python can help to automate tasks across the cyberattack life cycle for
+                            both
+                            attacker
+                            and defender. 
+                        </p> <br><br><br>
+                    </div>
+                </div>
+
+        </div>
+    </div>
 </body>
