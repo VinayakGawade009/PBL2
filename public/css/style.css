@@ -121,3 +121,8 @@ footer {
 .btns {
     display: flex;
 }
+
+.suggestion-card {
+    display: flex;
+    flex-wrap: wrap;
+}

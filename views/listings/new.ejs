@@ -5,48 +5,56 @@
 
             <br>
             <h3>Create a New Listing</h3>
-            <form action="/listings" method="POST">
+            <form action="/listings" method="POST" novalidate class="needs-validation">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input name="listing[title]" placeholder="Add a catchy title" type="text" class="form-control">
+                    <input name="listing[title]" placeholder="Add a catchy title" type="text" class="form-control" required>
+                    <div class="valid-feedback">Title looks good!</div>
                 </div>
-        
+                
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea name="listing[description]" type="text"  class="form-control"></textarea>
+                    <textarea name="listing[description]" type="text"  class="form-control" required></textarea>
+                    <div class="invalid-feedback">Please add course description!</div>
                 </div>
                 
                 <div class="mb-3">
                     <label for="image" class="form-label">Image Link</label>
                     <input name="listing[image]" placeholder="Enter image url/link" type="text" class="form-control">
                 </div>
-               
+                
                 <div class="mb-3">
                     <label for="tag" class="form-label">Tag</label>
-                    <select name="listing[tag]" id="tag"  class="form-control">
+                    <select name="listing[tag]" id="tag"  class="form-control" required>
+                        <option disabled selected value> -- select a tag -- </option>
                         <% tags.forEach(tag => { %>
                             <option value="<%= tag.value %>">
-                              <%= tag.label %>
+                                <%= tag.label %>
                             </option>
-                          <% }) %>
+                        <% }) %>
                     </select>
+                    <div class="invalid-feedback">Please select a valid tag!</div>
                 </div>
         
                 <div class="row">
                     <div class="mb-3 col-md-4">
                         <label for="language" class="form-label">Language:</label>
-                        <select name="listing[language]" id="language" class="form-control">
+                        <select name="listing[language]" id="language" class="form-control" required>
+                            <option disabled selected value> -- language? -- </option>
                             <option value="English">English</option>
                             <option value="Hindi">Hindi</option>
                         </select>
+                        <div class="invalid-feedback">Please select a language!</div>
                     </div>
                     
                     <div class="mb-3 col-md-8">
-                        <label for="state" class="form-label">Select a state:</label>
-                        <select name="listing[state]" id="state" class="form-control">
+                        <label for="state" class="form-label" required>Select a state:</label>
+                        <select name="listing[state]" id="state" class="form-control" required>
+                            <option disabled selected value> -- select an option -- </option>
                             <option value="Recorded">Recorded</option>
                             <option value="Live">Live</option>
                         </select>
+                        <div class="invalid-feedback">Please select a status!</div>
                     </div>
                 </div>
                 <br>

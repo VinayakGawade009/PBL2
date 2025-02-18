@@ -6,48 +6,57 @@
 
             <br>
             <h3>Edit your Listing</h3>
-            <form action="/listings/<%= listing._id %>?_method=PUT" method="POST">
+            <form action="/listings/<%= listing._id %>?_method=PUT" method="POST" novalidate class="needs-validation">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control">
+                    <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required>
+                    <div class="valid-feedback">Title looks good!</div>
                 </div>
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea name="listing[description]" type="text" class="form-control"><%= listing.description %></textarea>
+                    <textarea name="listing[description]" type="text" class="form-control" required><%= listing.description %></textarea>
+                    <div class="invalid-feedback">Please add course description!</div>
                 </div>
 
                 <div class="mb-3">
                     <label for="image" class="form-label">Image Link</label>
-                    <input name="listing[image]" value="<%= listing.image %>" placeholder="Enter image url/link" type="text" class="form-control">
+                    <input name="listing[image]" value="<%= listing.image %>" placeholder="Enter image url/link" type="text" class="form-control" required />
+                    <div class="invalid-feedback">Please enter a valid link for image!</div>
                 </div>
 
                 <div class="mb-3">
                     <label for="tag" class="form-label">Tag:</label>
-                    <select name="listing[tag]" id="tag" class="form-control">
+                    <select name="listing[tag]" id="tag" class="form-control" required>
+                        <option disabled selected value> -- select a tag -- </option>
                         <% tags.forEach(tag => { %>
                             <option value="<%= tag.value %>" <%= tag.value === prevValue ? 'selected' : '' %>>
                             <%= tag.label %>
                             </option>
                         <% }) %>
                     </select>
+                    <div class="invalid-feedback">Please select a valid tag!</div>
                 </div>
 
                 <div class="row">
                     <div class="mb-3 col-md-4">
                         <label for="language" class="form-label">Language:</label>
-                        <select name="listing[language]" id="language" class="form-control">
+                        <select name="listing[language]" id="language" class="form-control" required>
+                            <option disabled selected value> -- language? -- </option>
                             <option value="English" <%= listing.language === 'English' ? 'selected' : '' %>>English</option>
                             <option value="Hindi" <%= listing.language === 'Hindi' ? 'selected' : '' %>>Hindi</option>
                         </select>
+                        <div class="invalid-feedback">Please select a language!</div>
                     </div>
     
                     <div class="mb-3 col-md-8">
                         <label for="state" class="form-label">Select a state:</label>
-                        <select name="listing[state]" id="state" class="form-control">
+                        <select name="listing[state]" id="state" class="form-control" required>
+                            <option disabled selected value> -- select an option -- </option>
                             <option value="Recorded" <%= listing.state === 'Recorded' ? 'selected' : '' %>>Recorded</option>
                             <option value="Live" <%= listing.state === 'Live' ? 'selected' : '' %>>Live</option>
                         </select>
+                        <div class="invalid-feedback">Please select a status!</div>
                     </div>
                 </div>
                 <br>
