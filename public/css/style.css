@@ -3,6 +3,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    /* background-color: #F8F9FA !important; */
 }
 
 .container {
@@ -60,7 +61,7 @@ footer {
 }
 
 /* Cards */
-.card {
+.listing-card {
     border: none !important;
     border-radius: 1rem !important;
     margin-bottom: 2rem;
