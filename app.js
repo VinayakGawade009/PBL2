@@ -7,9 +7,13 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js");
 
-const listings = require("./routes/listing.js");
-const reviews = require("./routes/review.js");
+const listingRouter = require("./routes/listing.js");
+const reviewRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
 
 main().then(() => {
     console.log("connection successful");
@@ -47,16 +51,36 @@ app.get("/", (req, res) => {
 app.use(session(sessionOptions))
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     // console.log(res.locals.success);
     next();
-})
+});
 
-app.use("/listings", listings); // listing routes
+// app.get("/demouser", async (req, res) => {
+//     let fakeuser = new User({
+//         email: "student@gmail.com",
+//         username: "student",
+//     })
 
-app.use("/listings/:id/reviews", reviews); // review routes
+//     let registeredUser = await User.register(fakeuser, "helloworld");
+//     res.send(registeredUser) ; 
+// })
+
+app.use("/listings", listingRouter); // listing routes
+
+app.use("/listings/:id/reviews", reviewRouter); // review routes
+
+app.use("/", userRouter); // review routes
 
 // app.get("/test", async(req, res) => {
 //     let sampleListing = new Listing ({
