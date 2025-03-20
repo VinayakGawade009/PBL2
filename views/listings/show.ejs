@@ -13,6 +13,8 @@
                             <div class="card-body mx-2">
                                 <h5 class="card-title"><b><%= listing.title %></b></h5>
                                 <p class="card-text"><%= listing.description %></p>
+
+                                <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
                                 <div class="btns">
                                     <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark edit-btn mx-2">Edit</a>
                             
@@ -20,7 +22,7 @@
                                         <button class="btn btn-dark">Delete</button>
                                     </form>
                                 </div>
-
+                                <% } %>
 
                             </div>
 
@@ -33,6 +35,7 @@
                         <div class="col-md-10">
                             <P style="font-size: larger;">
                                 <b style="font-size: larger;"> About This Course :</b> <br>
+                                Owned by <u><i><%= listing.owner.username %></i></u> <br>
                                 <%= listing.description %>
                             </P>
                             <div class="capsule"><i>#<%= listing.tag %></i></div>
@@ -154,6 +157,7 @@
 
         <hr>
         <div class="col-10 offset-1 mb-3">
+            <% if(currUser) { %>
             <h4>Leave a Review</h4>
             <form action="/listings/<%= listing.id %>/reviews" method="POST" novalidate class="needs-validation">
                 <div class="mb-3 mt-3">
@@ -169,8 +173,9 @@
                 </div>
                 <button class="btn btn-outline-dark">Submit</button>
             </form>
-
             <hr>
+            <% } %>
+
 
             <p><b>All Reviews</b></p>
     
@@ -178,13 +183,15 @@
                 <% for(review of listing.reviews) { %>
                     <div class="card col-5 ms-3 mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Jane Doe</h5>
+                            <h5 class="card-title">@<%= review.author.username %></h5>
                             <p class="card-text"><%= review.comment %></p>
                             <p class="card-text"><%= review.rating %> stars</p>
                         </div>
+                        <% if(currUser && currUser._id.equals(review.author._id)) { %>
                         <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" class="mb-3">
                             <button class="btn btn-sm btn-dark">Delete</button>
                         </form>
+                        <% } %>
                     </div>
                 <% } %>
             </div>
