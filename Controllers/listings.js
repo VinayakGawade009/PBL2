@@ -1,4 +1,5 @@
 const Listing = require("../models/listing");
+const tags = require("../tags.js");
 
 module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
@@ -21,10 +22,14 @@ module.exports.showListing = async (req, res) =>{
 };
 
 module.exports.createListing = async (req, res, next) => {
+    let url = req.file.path;
+    let filename = req.file.filename;
+    // console.log(url, "..", filename);
     // extract all info
-    let newlisting = new Listing(req.body.listing);
-    console.log(req.user);
+    const newlisting = new Listing(req.body.listing);
+    // console.log(req.user);
     newlisting.owner = req.user._id;
+    newlisting.image = { url, filename };
     await newlisting.save();
     req.flash("success", "New Listng Created!");
     res.redirect("/listings");

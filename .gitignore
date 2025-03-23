@@ -3,3 +3,4 @@ procedure.txt
 node_modules/
 comment.html
 comment2.css
+.env
