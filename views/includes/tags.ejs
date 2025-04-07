@@ -1,0 +1,110 @@
+
+<style>
+    /* #filters {
+        display: flex;
+        flex-wrap: wrap;
+    } */
+
+    #filters {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;     /* Firefox */
+        padding-bottom: 1rem;
+    }
+
+    /* Hides scrollbar in WebKit browsers (Chrome, Safari) */
+    #filters::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    .filter {
+        text-decoration: none;
+        color: black;
+        text-align: center;
+        margin-right: 2rem;
+        margin-top: 2rem;
+        opacity: 0.68;
+    }
+
+    .filter:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    .filter p {
+        font-size: 0.9rem;
+    }
+</style>
+
+<div id="filters">
+
+    <a href="/listings?tag=All" class="filter">
+        <div><i class="fa-solid fa-earth-asia"></i></div>
+        <p>All</p>
+    </a>
+
+    <a href="/listings?tag=Full Stack" class="filter">
+        <div><i class="fa-solid fa-computer"></i></div>
+        <p>FullStack</p>
+    </a>
+
+    <a href="/listings?tag=Frontend" class="filter">
+        <div><i class="fa-solid fa-display"></i></div>
+        <p>Frontend</p>
+    </a>
+    <a href="/listings?tag=Backend" class="filter">
+        <div><i class="fa-solid fa-network-wired"></i></div>
+        <p>Backend</p>
+    </a>
+    <a href="/listings?tag=Programming Language" class="filter">
+        <div><i class="fa-solid fa-laptop-code"></i></div>
+        <p>Programming Language</p>
+    </a>
+    <a href="/listings?tag=Programming" class="filter">
+        <div><i class="fa-solid fa-keyboard"></i></div>
+        <p>Programming</p>
+    </a>
+    <a href="/listings?tag=Design" class="filter">
+        <div><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <p>Design</p>
+    </a>
+    <a href="/listings?tag=AI/ML" class="filter">
+        <div><i class="fa-solid fa-server"></i></div>
+        <p>AI/ML</p>
+    </a>
+    <a href="/listings?tag=Data Science" class="filter">
+        <div><i class="fa-solid fa-database"></i></div>
+        <p>Data Science</p>
+    </a>
+    <a href="/listings?tag=Cybersecurity" class="filter">
+        <div><i class="fa-solid fa-shield"></i></div>
+        <p>Cybersecurity</p>
+    </a>
+    <a href="/listings?tag=Cloud" class="filter">
+        <div><i class="fa-solid fa-cloud"></i></div>
+        <p>Cloud</p>
+    </a>
+    <a href="/listings?tag=Blockchain" class="filter">
+        <div><i class="fa-solid fa-diagram-project"></i></div>
+        <p>Blockchain</p>
+    </a>
+    <a href="/listings?tag=App Development" class="filter">
+        <div><i class="fa-solid fa-mobile"></i></div>
+        <p>App Development</p>
+    </a>
+    <a href="/listings?tag=Game Development" class="filter">
+        <div><i class="fa-solid fa-gamepad"></i></div>
+        <p>Game Development</p>
+    </a>
+    <a href="/listings?tag=Networking" class="filter">
+        <div><i class="fa-solid fa-globe"></i></div>
+        <p>Networking</p>
+    </a>
+    <a href="/listings?tag=DevOps" class="filter">
+        <div><i class="fa-solid fa-infinity"></i></div>
+        <p>DevOps</p>
+    </a>
+</div>

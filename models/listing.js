@@ -15,7 +15,11 @@ const listingSchema = new Schema({
         url: String,
         filename: String,
     },
-    tag: String,
+    tags: [
+        {
+            type: String,
+        }
+    ],
     state: String,
     language: String,
     reviews: [

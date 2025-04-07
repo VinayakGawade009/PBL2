@@ -25,7 +25,8 @@
                 
                 <div class="mb-3">
                     <label for="tag" class="form-label">Tag</label>
-                    <select name="listing[tag]" id="tag"  class="form-control" required>
+                    <!-- <select name="listing[tag]" id="tag"  class="form-control" required> -->
+                    <select name="listing[tags][]" id="tags" class="form-control" multiple required>
                         <option disabled selected value> -- select a tag -- </option>
                         <% tags.forEach(tag => { %>
                             <option value="<%= tag.value %>">

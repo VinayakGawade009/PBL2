@@ -9,9 +9,10 @@ module.exports.listingSchema = Joi.object({
             .required(),
         description: Joi.string()
             .required(),
-        tag: Joi.string()
-            .valid(...tagValues)
-            .required(),
+        // tag: Joi.string()
+        //     .valid(...tagValues)
+        //     .required(),
+        tags: Joi.array().items(Joi.string().valid(...tagValues)).required(),
         language: Joi.string()
             .valid("English", "Hindi")
             .required(),

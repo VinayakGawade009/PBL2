@@ -1,13 +1,42 @@
 const Listing = require("../models/listing");
 const tags = require("../tags.js");
 
+// module.exports.index = async (req, res) => {
+//     const allListings = await Listing.find({});
+//     res.render("listings/index.ejs", { allListings });
+// };
+
 module.exports.index = async (req, res) => {
-    const allListings = await Listing.find({});
+    // console.log(req.query);  // Debugging: Check query parameters in console
+    const { tag } = req.query; // Get the 'tag' from query parameters
+    let filter = {};
+
+    if (tag && tag !== "All") {
+        filter.tags = tag; // Ensure 'tags' is being checked correctly
+    }
+
+    const allListings = await Listing.find(filter);
     res.render("listings/index.ejs", { allListings });
 };
 
 module.exports.renderNewForm = (req, res) => {
     res.render("listings/new.ejs", { tags });
+};
+
+module.exports.searchResults = async (req, res) => {
+    const { search } = req.query;
+    // console.log(search);
+    
+    const foundListings = await Listing.find({
+        $or: [
+            { title: { $regex: search, $options: "i" } },
+            { description: { $regex: search, $options: "i" } },
+            { tags: { $in: [new RegExp(search, "i")] } }
+        ]
+    });
+
+    res.render("listings/searchResults.ejs", {foundListings});
+
 };
 
 module.exports.showListing = async (req, res) =>{

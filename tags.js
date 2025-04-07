@@ -10,7 +10,6 @@ module.exports = [
     { value: 'Cybersecurity', label: 'Cybersecurity' },
     { value: 'Cloud', label: 'Cloud' },
     { value: 'Blockchain', label: 'Blockchain' },
-    { value: 'DevOps', label: 'DevOps' },
     { value: 'App Development', label: 'App Development' },
     { value: 'Game Development', label: 'Game Development' },
     { value: 'Networking', label: 'Networking' },
