@@ -38,3 +38,7 @@ git clone https://github.com/VinayakGawade009/PBL2.git
 cd PBL2
 npm install
 npm start
+```
+
+## Screenshots
+
