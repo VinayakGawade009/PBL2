@@ -73,7 +73,7 @@ Here are some key pages and diagrams from the project:
 ## Folder Structure
 
 The project is organized as follows:
-
+```
 PBL2/
 ├── Controllers/ # Handles backend logic and route controllers
 ├── FrontEnd/ # Contains frontend components and assets
@@ -84,8 +84,7 @@ PBL2/
 ├── routes/ # Express route definitions
 ├── app.js / server.js # Entry point for backend server
 └── README.md # Project documentation
-
-
+```
 ## Live Demo
 
 Comming Soon.
