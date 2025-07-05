@@ -75,23 +75,14 @@ Here are some key pages and diagrams from the project:
 The project is organized as follows:
 
 PBL2/
-│
 ├── Controllers/ # Handles backend logic and route controllers
-│
 ├── FrontEnd/ # Contains frontend components and assets
-│
 ├── ScreenShots/ # Contains images and diagrams used in documentation
-│
 ├── models/ # Mongoose schemas for MongoDB collections
-│
 ├── views/ # EJS templates rendered on the frontend
-│
 ├── public/ # Static files (CSS, JS, images)
-│
 ├── routes/ # Express route definitions
-│
 ├── app.js / server.js # Entry point for backend server
-│
 └── README.md # Project documentation
 
 
