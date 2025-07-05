@@ -38,8 +38,24 @@
                                 Owned by <u><i><%= listing.owner.username %></i></u> <br>
                                 <%= listing.description %>
                             </P>
-                            <div class="capsule"><i>#<%= listing.tag %></i></div>
-                            <div class="capsule"><i><%= listing.state %></i></div>
+                            <!-- <div class="capsule"><i>#<%= listing.tags[0] %></i></div> -->
+                            <h5>Tags:</h5>
+                            <div class="mb-3">
+                                <% listing.tags.forEach(tag => { %>
+                                    <span class="badge bg-dark me-2 mb-2 p-2" style="font-size: 0.85rem;"><%= tag %></span>
+                                <% }) %>
+                            </div>
+
+                            <% if (listing.state === 'Live') { %>
+                                <span class="badge bg-danger">
+                                    <i class="fa-solid fa-broadcast-tower"></i> Live
+                                </span>
+                            <% } else { %>
+                                <span class="badge bg-secondary">
+                                    <i class="fa-solid fa-video"></i> Recorded
+                                </span>
+                            <% } %>
+                            <!-- <div class="capsule"><i><%= listing.state %></i></div> -->
                         </div>
                     </div>
                 </div>
@@ -116,9 +132,9 @@
         </div>
         <br><br>
         <h3> RELATED COURSES</h3><br>
-        <div class="d-flex justify-content-around">
+        <!-- <div class="d-flex justify-content-around">
                 <div class="card mx-1" style="background-color: lavender;max-width: 33%;">
-                    <img src="<%= listing.image %>" class="card-img-top" alt="..." style="width: 100%;">
+                    <img src="<%=  %>" class="card-img-top" alt="..." style="width: 100%;">
                     <div class="card-body mx-1">
                         <h5 class="card-title">ADVANCE PYTHON</h5>
                         <p class="card-text">By the course's culmination you will not only possess a profound
@@ -129,7 +145,7 @@
                     </div>
                 </div>
                 <div class="card mx-1" style="background-color:lavender;max-width: 33%;transition: ease;">
-                    <img src="<%= listing.image %>" class="card-img-top" alt="..." style="width: 100%;">
+                    <img src="<%=  %>" class="card-img-top" alt="..." style="width: 100%;">
                     <div class="card-body mx-1">
                         <h5 class="card-title">DATA ANALYSIS WITH PTYHON</h5>
                         <p class="card-text">Analysing data eith python is an essential skill for Data Scientist and
@@ -142,7 +158,7 @@
                     </div>
                 </div>
                 <div class="card mx-1" style="background-color: lavender;max-width: 38%;">
-                    <img src="<%= listing.image %>" class="card-img-top" alt="..." style="width: 100%;">
+                    <img src="<%=  %>" class="card-img-top" alt="..." style="width: 100%;">
                     <div class="card-body  mx-1">
                         <h5 class="card-title">PYHTON FOR CYBER SECURITY</h5>
                         <p class="card-text">Python can help to automate tasks across the cyberattack life cycle for
@@ -153,7 +169,34 @@
                     </div>
                 </div>
 
+        </div> -->
+
+        
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+            <% for(let listing of allListings) { %>
+                <a href="/listings/<%= listing._id %>" class="listing-link">
+                    <div class="card col listing-card" >
+                        <img class="card-img-top" src="<%= listing.image.url %>" alt="Course_Image" style="height: 12.2rem;" />
+                        <div class="card-img-overlay"></div>
+            
+                        <div class="card-body">
+                            <p class="card-text">
+                                <b><%= listing.title %></b> <br>
+                                <%= listing.description %> <br>
+                                <div class="capsule">
+                                    #<%= listing.tags[0] %>
+                                </div>
+                                <div class="capsule">
+                                    <i><%= listing.state %></i>
+                                </div>
+                                <i><%= listing.language %></i>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                <% } %>
         </div>
+
 
         <hr>
         <div class="col-10 offset-1 mb-3">

@@ -42,13 +42,18 @@
               </form>
         </div>
           <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="/listings/new">Add your course</a>
+            <a class="nav-link" href="/listings/new">Add your course</a>
+
             <% if(!currUser) { %>
               <a class="nav-link" href="/signup"><b>Sign up</b></a>
               <a class="nav-link" href="/login"><b>Log in</b></a>
-            <% } %>
-            <% if(currUser) { %>
-              <a class="nav-link" href="/logout">Log out</a>
+              <% } %>
+              <% if(currUser) { %>
+                <a href="/verify" class="nav-link">
+                  <i class="fa-solid fa-user-check"></i> Verify as Teacher
+                </a>
+                
+                <a class="nav-link" href="/logout">Log out</a>
             <% } %>
         </div>
       </div>

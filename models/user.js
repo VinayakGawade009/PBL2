@@ -7,7 +7,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-
+    teacher: {
+        type: Schema.Types.ObjectId,
+        ref: "Teacher"  // This links to your Teacher model
+    }
 });
 
 userSchema.plugin(passportLocalMongoose);

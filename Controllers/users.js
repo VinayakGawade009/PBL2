@@ -1,4 +1,5 @@
 const User = require("../models/user.js");
+const tags = require("../tags.js");
 
 module.exports.renderSignupForm = (req, res) => {
     res.render("users/signup");
@@ -41,4 +42,8 @@ module.exports.logout = (req, res, next) => {
         req.flash("success", "you are logged out!");
         res.redirect("/listings");
     });
+};
+
+module.exports.renderVerifyForm = (req, res) => {
+    res.render("users/verify.ejs", { tags });
 };

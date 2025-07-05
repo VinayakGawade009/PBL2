@@ -40,14 +40,33 @@ module.exports.searchResults = async (req, res) => {
 };
 
 module.exports.showListing = async (req, res) =>{
+    // let {id} = req.params;
+    // const listing = await Listing.findById(id).populate({path:  "reviews", populate: {path: "author"}}).populate("owner");
+    // if(!listing) {
+    //     req.flash("error", "Listing you requested for does not exist!");
+    //     res.redirect("/listings");
+    // }
+    // console.log(listing);
+    // res.render("listings/show.ejs", { listing });
+
     let {id} = req.params;
     const listing = await Listing.findById(id).populate({path:  "reviews", populate: {path: "author"}}).populate("owner");
     if(!listing) {
         req.flash("error", "Listing you requested for does not exist!");
         res.redirect("/listings");
     }
-    console.log(listing);
-    res.render("listings/show.ejs", { listing });
+    let filter = {};
+    if (listing.tags[0]) {
+        filter.tags = listing.tags[0]; // Ensure 'tags' is being checked correctly
+    }
+
+    const allListings = await Listing.find(filter);
+
+    // console.log(listing);
+    res.render("listings/show.ejs", { listing , allListings });
+    
+
+    // res.render("listings/index.ejs", { allListings });
 };
 
 module.exports.createListing = async (req, res, next) => {

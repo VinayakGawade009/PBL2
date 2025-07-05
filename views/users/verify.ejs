@@ -1,0 +1,79 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="row">
+        <div class="col-8 offset-2">
+
+            <br>
+            <h3>Apply as a Teacher</h3>
+
+            <form action="/teachers" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+
+                <!-- Name -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input name="teacher[name]" type="text" class="form-control" placeholder="John Doe" required>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input name="teacher[email]" type="email" class="form-control" placeholder="you@example.com" required>
+                    <div class="invalid-feedback">Enter a valid email.</div>
+                </div>
+
+                <!-- Bio -->
+                <div class="mb-3">
+                    <label for="bio" class="form-label">Short Bio</label>
+                    <textarea name="teacher[bio]" rows="3" class="form-control" placeholder="Tell us a bit about yourself..." required></textarea>
+                    <div class="invalid-feedback">Please write a short bio.</div>
+                </div>
+
+                <!-- Expertise Tags (same style as course tags) -->
+                <div class="mb-3">
+                    <label class="form-label">Areas of Expertise</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        <% tags.forEach((tag, index) => { %>
+                            <input
+                                type="checkbox"
+                                class="btn-check"
+                                name="teacher[expertise][]"
+                                id="tag-<%= tag.value %>"
+                                value="<%= tag.value %>"
+                                <%= index === 0 ? 'required' : '' %>
+                            >
+                            <label class="btn btn-outline-dark" for="tag-<%= tag.value %>">
+                                <%= tag.label %>
+                            </label>
+                        <% }) %>
+                        <div class="invalid-feedback">Please select at least one area.</div>
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div class="mb-3">
+                    <label for="experience" class="form-label">Years of Experience</label>
+                    <input name="teacher[experience]" type="number" class="form-control" placeholder="e.g. 2" required>
+                </div>
+
+                <!-- Resume / Portfolio -->
+                <div class="mb-3">
+                    <label for="resume" class="form-label">Portfolio / Resume / LinkedIn (Optional)</label>
+                    <input name="teacher[portfolio]" type="url" class="form-control" placeholder="https://yourportfolio.com">
+                </div>
+
+                <!-- Agree to terms -->
+                <div class="form-check mb-3">
+                    <input name="teacher[agree]" type="checkbox" class="form-check-input" required>
+                    <label class="form-check-label" for="agree">I agree to the platform’s terms and conditions.</label>
+                    <div class="invalid-feedback">You must agree before submitting.</div>
+                </div>
+
+                <!-- Submit -->
+                <button class="btn btn-dark add-btn">Submit Application</button>
+                <br><br>
+
+            </form>
+        </div>
+    </div>
+</body>

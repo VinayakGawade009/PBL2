@@ -30,17 +30,24 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="tag" class="form-label">Tag:</label>
-                    <select name="listing[tag]" id="tag" class="form-control" required>
-                        <option disabled selected value> -- select a tag -- </option>
-                        <% tags.forEach(tag => { %>
-                            <option value="<%= tag.value %>" <%= tag.value === prevValue ? 'selected' : '' %>>
-                            <%= tag.label %>
-                            </option>
+                    <label class="form-label">Tags</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        <% tags.forEach((tag, index) => { %>
+                            <input
+                                type="checkbox"
+                                class="btn-check"
+                                name="listing[tags][]"
+                                id="tag-<%= tag.value %>"
+                                value="<%= tag.value %>"
+                                <%= listing.tags.includes(tag.value) ? 'checked' : '' %>
+                                <%= index === 0 ? 'required' : '' %>  
+                            >
+                            <label class="btn btn-outline-dark" for="tag-<%= tag.value %>"><%= tag.label %></label>
                         <% }) %>
-                    </select>
-                    <div class="invalid-feedback">Please select a valid tag!</div>
+                        <div class="invalid-feedback">Please select at least one tag!</div>
+                    </div>
                 </div>
+                
 
                 <div class="row">
                     <div class="mb-3 col-md-4">
